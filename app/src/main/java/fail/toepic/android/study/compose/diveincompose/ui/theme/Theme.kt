@@ -33,7 +33,8 @@ fun DiveInComposeTheme(
     content: @Composable() () -> Unit
 ) {
     val colors = if (darkTheme) {
-        DarkColorPalette
+        LightColorPalette  // use LightColorOnly
+//        DarkColorPalette
     } else {
         LightColorPalette
     }
