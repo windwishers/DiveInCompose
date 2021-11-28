@@ -17,7 +17,8 @@ import fail.toepic.android.study.compose.diveincompose.ui.nav.Screen
 data class Items(val text : String, val nav : Screen)
 
 val list = listOf(
-    Items("Navigation",Screen.NavigationMain)
+    Items("Navigation",Screen.NavigationMain),
+    Items("FullFitSwitch",Screen.FullFitSwitch),
 )
 
 @Composable

@@ -11,13 +11,19 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import fail.toepic.android.study.compose.diveincompose.ui.mainlist.MainListScreen
+import fail.toepic.android.study.compose.diveincompose.ui.maze.switch.FullFitSwitchScreen
 import fail.toepic.android.study.compose.diveincompose.ui.nav.Screen
 import fail.toepic.android.study.compose.diveincompose.ui.navigation.NavigationMainScreen
 import fail.toepic.android.study.compose.diveincompose.ui.theme.DiveInComposeTheme
+import logcat.AndroidLogcatLogger
+import logcat.LogPriority
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        AndroidLogcatLogger.installOnDebuggableApp(application, minPriority = LogPriority.VERBOSE)
+
         setContent {
             DiveInComposeTheme {
                 // A surface container using the 'background' color from the theme
@@ -33,6 +39,11 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(route = Screen.NavigationMain.route){
                             NavigationMainScreen{ src ->
+                                navController.navigate(src.route)
+                            }
+                        }
+                        composable(route = Screen.FullFitSwitch.route){
+                            FullFitSwitchScreen{ src ->
                                 navController.navigate(src.route)
                             }
                         }
