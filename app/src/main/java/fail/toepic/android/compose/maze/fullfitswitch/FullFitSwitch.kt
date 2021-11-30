@@ -208,19 +208,19 @@ private fun FullFitSwitchImpl(
 
 
     val bodyColorState = animateColorAsState(
-        targetValue = decoTg.get(!checked).color,
+        targetValue = decoTg.get(checked).color,
         animationSpec = animationColorSpec,
     )
 
     val bodyBorderState = animateColorAsState(
-        targetValue = decoTg.get(!checked).borderColor,
+        targetValue = decoTg.get(checked).borderColor,
         animationSpec = animationColorSpec,
     )
 
 
     val thumbColorState = animateColorAsState(
         targetValue =
-        thumbDecoTg.get(!checked).color,
+        thumbDecoTg.get(checked).color,
         animationSpec = animationColorSpec,
     )
 
@@ -231,7 +231,7 @@ private fun FullFitSwitchImpl(
     )
 
     val thumbBorderDp = animateDpAsState(
-        targetValue = thumbDecoTg.get(!checked).borderWidth,
+        targetValue = thumbDecoTg.get(checked).borderWidth,
         animationSpec = tween(500)
     )
 
@@ -323,7 +323,7 @@ private fun FullFitSwitchImpl(
                 modifier = Modifier
                     .size(height = onBoxWidth, width = onBoxHeight)
                     .padding(onBoxPadding)
-                    .align(alignment = Alignment.CenterStart), contentAlignment = Alignment.Center
+                    .align(alignment = Alignment.CenterEnd), contentAlignment = Alignment.Center
             ) {
                 Text(
                     modifier = Modifier.padding(onPadding),
@@ -340,7 +340,7 @@ private fun FullFitSwitchImpl(
                 modifier = Modifier
                     .size(height = offBoxHeight, width = offBoxWidth)
                     .padding(offBoxPadding)
-                    .align(alignment = Alignment.CenterEnd), contentAlignment = Alignment.Center
+                    .align(alignment = Alignment.CenterStart), contentAlignment = Alignment.Center
             ) {
                 Text(
                     modifier = Modifier.padding(offPadding),

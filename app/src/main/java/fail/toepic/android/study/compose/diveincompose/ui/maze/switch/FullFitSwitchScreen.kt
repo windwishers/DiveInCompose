@@ -17,7 +17,10 @@ import fail.toepic.android.study.compose.diveincompose.ui.nav.Screen
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun FullFitSwitchScreen(nav : (Screen)->Unit ){
-    Column(Modifier.fillMaxSize().padding(horizontal = 16.dp)) {
+    Column(
+        Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp)) {
         Row(modifier = Modifier
             .clickable {
                 nav.invoke(Screen.MainList)
@@ -40,6 +43,10 @@ fun FullFitSwitchScreen(nav : (Screen)->Unit ){
         LazyColumn(modifier = Modifier.fillMaxSize(),verticalArrangement = Arrangement.spacedBy(10.dp)){
 
             item{
+                Divider()
+            }
+
+            item{
                 val checked = remember{ mutableStateOf(false) }
                 Box(Modifier.fillMaxWidth()){
                     FullFitSwitch(
@@ -48,17 +55,24 @@ fun FullFitSwitchScreen(nav : (Screen)->Unit ){
                     )
                 }
             }
+
             item{
                 Divider()
             }
 
             item{
-                val checked = remember{ mutableStateOf(false) }
-                FullFitSwitch(
-                    checked = checked.value,onCheckedChange = {checked.value = it},
-                    onText = "ON",
-                    offText = "OFF",
-                )
+
+                Column {
+                    val checked = remember{ mutableStateOf(false) }
+                    Text(text = checked.value.toString() )
+
+                    FullFitSwitch(
+                        checked = checked.value,onCheckedChange = {checked.value = it},
+                        onText = "ON",
+                        offText = "OFF",
+                    )
+                }
+
             }
         }
 
